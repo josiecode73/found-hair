@@ -362,7 +362,7 @@ export default function BookingScreen() {
         )}
       </ScrollView>
 
-      <View style={[styles.footer, { paddingBottom: insets.bottom + (Platform.OS === "web" ? 34 : 16) }]}>
+      <View style={[styles.footer, { paddingBottom: Platform.OS === "web" ? 100 : insets.bottom + 16 }]}>
         <Pressable
           style={[styles.nextBtn, !canProceed() && styles.nextBtnDisabled]}
           onPress={step === 5 ? handleSubmit : handleNext}
