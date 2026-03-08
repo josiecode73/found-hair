@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- 強制手機版 viewport (390px = iPhone 14 標準寬度) -->
+    <meta name="viewport" content="width=390, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <title>Found Hair</title>
+
+    <!-- PWA: 加入主畫面 / 全屏開啟 -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Found Hair" />
+    <meta name="application-name" content="Found Hair" />
+    <meta name="theme-color" content="#1C1C1C" />
+    <meta name="description" content="台北專業美髮沙龍・信義店・東區店" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json" />
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="./assets/images/icon.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/images/icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/icon.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="./assets/images/icon.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/images/favicon.png" />
+
+    <!-- Apple Splash Screens (optional, enhances iOS PWA experience) -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <style id="expo-reset">
+      /* ─── Reset ─── */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        /* 桌面背景：手機外框感 */
+        background-color: #111111;
+      }
+
+      body {
+        overflow: hidden;
+        /* 桌機：限制最大寬度，手機置中 */
+        max-width: 430px;
+        margin: 0 auto;
+        background-color: #F8F6F2;
+        position: relative;
+      }
+
+      #root {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        max-width: 430px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* ─── 桌面：顯示手機外框陰影 ─── */
+      @media screen and (min-width: 430px) {
+        body {
+          box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
+          height: 100vh;
+        }
+      }
+
+      /* ─── 強制覆蓋任何 desktop breakpoint ─── */
+      @media (min-width: 768px) {
+        body {
+          max-width: 430px !important;
+          margin: 0 auto !important;
+        }
+        #root {
+          max-width: 430px !important;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        body {
+          max-width: 430px !important;
+          margin: 0 auto !important;
+        }
+        #root {
+          max-width: 430px !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <noscript>請開啟 JavaScript 以使用本應用程式。</noscript>
+    <div id="root"></div>
+  </body>
+</html>

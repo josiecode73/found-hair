@@ -1,0 +1,27 @@
+{
+  "name": "Found Hair",
+  "short_name": "Found Hair",
+  "description": "台北專業美髮沙龍・信義店・東區店",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1C1C1C",
+  "theme_color": "#1C1C1C",
+  "lang": "zh-TW",
+  "categories": ["lifestyle", "beauty"],
+  "icons": [
+    {
+      "src": "./assets/images/icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/images/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
