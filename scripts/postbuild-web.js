@@ -109,6 +109,10 @@ if (fs.existsSync(manifestSrc)) {
   console.warn("⚠️  web/manifest.json not found, skipping");
 }
 
-// ─── 6. 列出 dist/ 結構 ───
+// ─── 6. 建立 .nojekyll（GitHub Pages 需要，否則 _expo/ 會被 Jekyll 忽略）───
+fs.writeFileSync(path.join(distDir, ".nojekyll"), "", "utf-8");
+console.log("✅ .nojekyll created (prevents Jekyll from hiding _expo/)");
+
+// ─── 7. 列出 dist/ 結構 ───
 const files = fs.readdirSync(distDir);
 console.log("\ndist/ 內容:", files);
