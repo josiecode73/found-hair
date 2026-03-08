@@ -51,6 +51,10 @@ const headInsert = `
     <link rel="manifest" href="./manifest.json" />
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" href="./assets/images/icon.png" />
+    <!-- Traditional Chinese Font: Noto Sans TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <!-- Mobile-first global CSS -->
     <style id="mobile-override">
       *, *::before, *::after { box-sizing: border-box; }
@@ -67,6 +71,7 @@ const headInsert = `
         max-width: 430px !important;
         background-color: #F8F6F2;
         overflow: hidden;
+        font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
       }
 
       #root {
