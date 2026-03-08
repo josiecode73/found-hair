@@ -150,7 +150,7 @@ export default function BookingScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.header, { paddingTop: insets.top + (Platform.OS === "web" ? 67 : 0) }]}>
+      <View style={[styles.header, { paddingTop: insets.top + (Platform.OS === "web" ? 48 : 0) }]}>
         <View style={styles.headerTop}>
           {step > 1 ? (
             <Pressable onPress={handleBack} hitSlop={12}>
@@ -398,7 +398,7 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: COLORS.background,
     paddingHorizontal: 20,
-    paddingBottom: 16,
+    paddingBottom: 12,
     borderBottomWidth: 1,
     borderBottomColor: COLORS.borderLight,
   },
