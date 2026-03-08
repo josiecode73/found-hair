@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
   <head>
+    <script>
+      (function() {
+        var spa = sessionStorage.getItem('__spa_path');
+        if (spa) {
+          sessionStorage.removeItem('__spa_path');
+          window.history.replaceState(null, null, spa);
+        }
+      })();
+    </script>
     <meta charset="utf-8" />
     <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=390, initial-scale=1, maximum-scale=1, user-scalable=no" />
