@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   View,
   Text,
@@ -87,6 +87,7 @@ type Step = 1 | 2 | 3 | 4 | 5;
 
 export default function BookingScreen() {
   const insets = useSafeAreaInsets();
+  const scrollRef = useRef<ScrollView>(null);
   const [step, setStep] = useState<Step>(1);
   const [branch, setBranch] = useState<(typeof BRANCHES)[0] | null>(null);
   const [designer, setDesigner] = useState<(typeof DESIGNERS_ALL)[0] | null>(null);
@@ -101,11 +102,17 @@ export default function BookingScreen() {
   const designers = branch ? DESIGNERS_BY_BRANCH[branch.id] : [];
 
   const handleNext = () => {
-    if (step < 5) setStep((step + 1) as Step);
+    if (step < 5) {
+      setStep((step + 1) as Step);
+      scrollRef.current?.scrollTo({ y: 0, animated: false });
+    }
   };
 
   const handleBack = () => {
-    if (step > 1) setStep((step - 1) as Step);
+    if (step > 1) {
+      setStep((step - 1) as Step);
+      scrollRef.current?.scrollTo({ y: 0, animated: false });
+    }
   };
 
   const canProceed = () => {
@@ -192,6 +199,7 @@ export default function BookingScreen() {
       </View>
 
       <ScrollView
+        ref={scrollRef}
         style={styles.body}
         contentContainerStyle={{ paddingBottom: insets.bottom + 120 }}
         showsVerticalScrollIndicator={false}
