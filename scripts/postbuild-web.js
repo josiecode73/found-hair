@@ -17,6 +17,17 @@ if (!fs.existsSync(indexPath)) {
 
 let html = fs.readFileSync(indexPath, "utf-8");
 
+// ─── 0. 自動偵測並轉換絕對路徑為相對路徑 ───
+// 當 baseUrl 設為 "/found-hair" 時，Expo 產生 src="/found-hair/_expo/..."
+// 這裡把所有 ="/found-hair/ → ="./
+const basePrefixMatch = html.match(/src="(\/[^/"]+\/)/);
+if (basePrefixMatch && basePrefixMatch[1] && basePrefixMatch[1] !== '/') {
+  const basePrefix = basePrefixMatch[1]; // e.g. "/found-hair/"
+  const escaped = basePrefix.replace(/\//g, "\\/");
+  html = html.replace(new RegExp(`="${escaped}`, "g"), '="./');
+  console.log(`✅ 轉換 base URL: ${basePrefix} → ./`);
+}
+
 // ─── 1. 換掉 viewport（強制手機 390px）───
 html = html.replace(
   /<meta name="viewport"[^>]*>/,
