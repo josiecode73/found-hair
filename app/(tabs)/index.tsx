@@ -182,7 +182,7 @@ export default function HomeScreen() {
       contentContainerStyle={{ paddingBottom: insets.bottom + 100 }}
       showsVerticalScrollIndicator={false}
     >
-      <View style={[styles.headerBar, { paddingTop: insets.top + (Platform.OS === "web" ? 67 : 0) }]}>
+      <View style={[styles.headerBar, { paddingTop: insets.top + (Platform.OS === "web" ? 48 : 0) }]}>
         <Text style={styles.brandName}>Found Hair</Text>
         <Pressable onPress={() => router.push("/(tabs)/booking")} hitSlop={8}>
           <View style={styles.bookBtn}>
@@ -299,7 +299,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 20,
-    paddingBottom: 16,
+    paddingBottom: 10,
     backgroundColor: COLORS.background,
   },
   brandName: {
