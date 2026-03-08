@@ -29,7 +29,7 @@ jobs:
           node -e "
             const fs = require('fs');
             const cfg = JSON.parse(fs.readFileSync('app.json','utf8'));
-            cfg.expo.experiments = { ...cfg.expo.experiments, baseUrl: '.' };
+            cfg.expo.experiments = { ...cfg.expo.experiments, baseUrl: '/found-hair' };
             fs.writeFileSync('app.json', JSON.stringify(cfg, null, 2));
           "
 
