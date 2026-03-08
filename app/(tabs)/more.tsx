@@ -14,6 +14,7 @@ import { Ionicons, Feather } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { COLORS } from "@/constants/colors";
 import { router } from "expo-router";
+import { DESIGNERS } from "@/constants/designers";
 
 const BRANCHES = [
   {
@@ -42,70 +43,6 @@ const BRANCHES = [
   },
 ];
 
-const CDN = "https://storage.googleapis.com/studio-cms-assets/projects/Nxqg26DmO1";
-
-const DESIGNERS = [
-  {
-    id: "1",
-    name: "Emily Chen",
-    title: "首席設計師",
-    specialty: "精緻剪髮 · 染髮設計",
-    experience: "12年",
-    bio: "留學日本東京美容學院，專精亞洲臉型剪裁，擅長打造自然系韓式髮型。",
-    image: "https://storage.googleapis.com/studio-cms-assets/projects/Nxqg26DmO1/s-1280x1280_v-fms_webp_40a7edb0-2dd9-43f1-a321-e7ff386043e7_small.webp",
-    branch: "信義店",
-  },
-  {
-    id: "2",
-    name: "Alex Wang",
-    title: "資深設計師",
-    specialty: "燙髮造型 · 頭皮護理",
-    experience: "8年",
-    bio: "專業燙髮技術認證，對頭皮健康護理有深入研究，客戶滿意度95%以上。",
-    image: `${CDN}/s-960x1280_v-fms_webp_b9431a2b-1323-48f1-af38-3091c8dfd8ae_small.webp`,
-    branch: "信義店",
-  },
-  {
-    id: "3",
-    name: "Sophia Lin",
-    title: "設計師",
-    specialty: "韓系剪染 · 護髮療程",
-    experience: "5年",
-    bio: "熟悉最新韓系髮型趨勢，色彩搭配天賦異稟，擅長打造夢幻漸層色。",
-    image: `${CDN}/s-600x864_v-fs_webp_30e9ca4b-daef-49d9-b203-a90d275bd1e7_small.webp`,
-    branch: "信義店",
-  },
-  {
-    id: "4",
-    name: "Kevin Liu",
-    title: "設計師",
-    specialty: "男士剪髮 · 質感造型",
-    experience: "6年",
-    bio: "男士剪髮專家，從商務型到潮流感，都能精準抓到客戶想要的質感。",
-    image: `${CDN}/s-2400x2400_v-frms_webp_c25d7de4-e518-40c7-b3f3-b0bae2bd6f53_small.webp`,
-    branch: "東區店",
-  },
-  {
-    id: "5",
-    name: "Amy Chou",
-    title: "資深設計師",
-    specialty: "女士燙染 · 日系造型",
-    experience: "9年",
-    bio: "日系造型達人，精通各種燙髮技術，打造輕盈蓬鬆的夢幻捲髮。",
-    image: `${CDN}/s-2160x2160_v-frms_webp_2df05603-0b23-4b78-812f-e70ba9107213_small.webp`,
-    branch: "東區店",
-  },
-  {
-    id: "6",
-    name: "Brian Hsu",
-    title: "設計師",
-    specialty: "時尚染色 · 漂染技術",
-    experience: "4年",
-    bio: "色彩系設計師，專注各種特殊色系與漸層染色，創作個性十足的獨特髮色。",
-    image: `${CDN}/s-1010x720_v-fs_webp_4346c91c-28b1-46e5-aea4-231e6a0d8425_small.webp`,
-    branch: "東區店",
-  },
-];
 
 function MapThumbnail({ lat, lng, query, onPress }: { lat: number; lng: number; query: string; onPress: () => void }) {
   const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=16&size=600x300&maptype=roadmap&markers=color:0xC9A96E%7C${lat},${lng}&style=element:geometry%7Ccolor:0xf5f5f5&style=element:labels.icon%7Cvisibility:off`;
