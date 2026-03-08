@@ -5,7 +5,6 @@ import {
   ScrollView,
   StyleSheet,
   Pressable,
-  Dimensions,
   Modal,
   Platform,
 } from "react-native";
@@ -14,10 +13,8 @@ import { Image } from "expo-image";
 import { Feather } from "@expo/vector-icons";
 import { COLORS } from "@/constants/colors";
 
-const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const GRID_PAD = 16;
 const CARD_GAP = 10;
-const CARD_WIDTH = (SCREEN_WIDTH - GRID_PAD * 2 - CARD_GAP) / 2;
 
 const CATEGORIES = ["全部", "剪髮", "染髮", "燙髮", "護髮"];
 
@@ -308,8 +305,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   card: {
-    width: CARD_WIDTH,
-    height: CARD_WIDTH * 1.35,
+    width: "100%",
+    aspectRatio: 0.74,
     borderRadius: 14,
     overflow: "hidden",
     backgroundColor: COLORS.border,
