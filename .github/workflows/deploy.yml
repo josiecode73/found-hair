@@ -1,0 +1,50 @@
+name: Deploy Found Hair to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Set relative base URL for static export
+        run: |
+          node -e "
+            const fs = require('fs');
+            const cfg = JSON.parse(fs.readFileSync('app.json','utf8'));
+            cfg.expo.experiments = { ...cfg.expo.experiments, baseUrl: '.' };
+            fs.writeFileSync('app.json', JSON.stringify(cfg, null, 2));
+          "
+
+      - name: Build Expo web
+        run: npx expo export --platform web
+        env:
+          EXPO_PUBLIC_DOMAIN: ""
+
+      - name: Patch index.html (PWA + mobile layout)
+        run: node scripts/postbuild-web.js
+
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
+          clean: true
