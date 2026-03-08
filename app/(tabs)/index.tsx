@@ -194,7 +194,7 @@ export default function HomeScreen() {
       <HeroCarousel />
 
       <View style={styles.body}>
-        <SectionHeader title="我們的服務" />
+        <SectionHeader title="服務" />
         <View style={styles.servicesRow}>
           {SERVICES.map((s) => (
             <View key={s.id} style={styles.serviceCard}>
