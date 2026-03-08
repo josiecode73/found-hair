@@ -4,7 +4,6 @@ import {
   Text,
   ScrollView,
   StyleSheet,
-  Dimensions,
   Pressable,
   Platform,
 } from "react-native";
@@ -14,8 +13,6 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { COLORS } from "@/constants/colors";
-
-const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
 const CDN = "https://storage.googleapis.com/studio-cms-assets/projects/Nxqg26DmO1";
 
