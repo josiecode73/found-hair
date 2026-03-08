@@ -203,7 +203,7 @@ export default function BookingScreen() {
               <Pressable
                 key={b.id}
                 style={[styles.optionCard, branch?.id === b.id && styles.optionCardActive]}
-                onPress={() => { setBranch(b); Haptics.selectionAsync(); }}
+                onPress={() => { setBranch(b); setDesigner(null); Haptics.selectionAsync(); }}
               >
                 <View style={styles.optionIcon}>
                   <Ionicons name="location-outline" size={22} color={branch?.id === b.id ? COLORS.gold : COLORS.textSecondary} />
