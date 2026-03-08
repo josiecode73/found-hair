@@ -95,11 +95,24 @@ const headInsert = `
 
 html = html.replace("</head>", headInsert + "\n  </head>");
 
-// ─── 4. 寫回 dist/index.html ───
+// ─── 4. 注入 SPA 路由還原腳本（在 <head> 最前面執行，早於 defer 的 JS bundle）───
+const spaRestoreScript = `
+  <script>
+    (function() {
+      var spa = sessionStorage.getItem('__spa_path');
+      if (spa) {
+        sessionStorage.removeItem('__spa_path');
+        window.history.replaceState(null, null, spa);
+      }
+    })();
+  </script>`;
+html = html.replace("<head>", "<head>" + spaRestoreScript);
+
+// ─── 5. 寫回 dist/index.html ───
 fs.writeFileSync(indexPath, html, "utf-8");
 console.log("✅ dist/index.html patched (mobile PWA)");
 
-// ─── 5. 複製 manifest.json 到 dist/ ───
+// ─── 6. 複製 manifest.json 到 dist/ ───
 const manifestSrc = path.join(__dirname, "../web/manifest.json");
 const manifestDst = path.join(distDir, "manifest.json");
 if (fs.existsSync(manifestSrc)) {
@@ -109,10 +122,27 @@ if (fs.existsSync(manifestSrc)) {
   console.warn("⚠️  web/manifest.json not found, skipping");
 }
 
-// ─── 6. 建立 .nojekyll（GitHub Pages 需要，否則 _expo/ 會被 Jekyll 忽略）───
+// ─── 7. 建立 .nojekyll（GitHub Pages 需要，否則 _expo/ 會被 Jekyll 忽略）───
 fs.writeFileSync(path.join(distDir, ".nojekyll"), "", "utf-8");
-console.log("✅ .nojekyll created (prevents Jekyll from hiding _expo/)");
+console.log("✅ .nojekyll created");
 
-// ─── 7. 列出 dist/ 結構 ───
+// ─── 8. 建立 404.html（SPA 路由：直接訪問子路徑時重新導向回首頁）───
+const notFoundHtml = `<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <title>Found Hair</title>
+  <script>
+    // SPA GitHub Pages redirect: store path and redirect to root
+    sessionStorage.setItem('__spa_path', window.location.pathname + window.location.search + window.location.hash);
+    window.location.replace('/found-hair/');
+  </script>
+</head>
+<body></body>
+</html>`;
+fs.writeFileSync(path.join(distDir, "404.html"), notFoundHtml, "utf-8");
+console.log("✅ 404.html created (SPA routing redirect)");
+
+// ─── 9. 列出 dist/ 結構 ───
 const files = fs.readdirSync(distDir);
 console.log("\ndist/ 內容:", files);
