@@ -16,6 +16,7 @@ import { Ionicons, Feather } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Haptics from "expo-haptics";
 import { COLORS } from "@/constants/colors";
+import { DESIGNERS, DESIGNERS_BY_BRANCH } from "@/constants/designers";
 
 const BRANCHES = [
   {
@@ -32,22 +33,6 @@ const BRANCHES = [
   },
 ];
 
-const DESIGNERS_BY_BRANCH: Record<string, typeof DESIGNERS_ALL> = {
-  "1": [
-    { id: "1", name: "Emily Chen", title: "首席設計師", image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=300&q=80" },
-    { id: "2", name: "Alex Wang", title: "資深設計師", image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=300&q=80" },
-    { id: "3", name: "Sophia Lin", title: "設計師", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&q=80" },
-  ],
-  "2": [
-    { id: "4", name: "Kevin Liu", title: "設計師", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&q=80" },
-    { id: "5", name: "Amy Chou", title: "資深設計師", image: "https://images.unsplash.com/photo-1494790108755-2616b332c1c8?w=300&q=80" },
-    { id: "6", name: "Brian Hsu", title: "設計師", image: "https://images.unsplash.com/photo-1542178243-bc20204b769f?w=300&q=80" },
-  ],
-};
-
-const DESIGNERS_ALL = [
-  { id: "1", name: "Emily Chen", title: "首席設計師", image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=300&q=80" },
-];
 
 const SERVICES = [
   { id: "1", name: "剪髮", duration: "60分鐘", price: "NT$ 800" },
@@ -90,7 +75,7 @@ export default function BookingScreen() {
   const scrollRef = useRef<ScrollView>(null);
   const [step, setStep] = useState<Step>(1);
   const [branch, setBranch] = useState<(typeof BRANCHES)[0] | null>(null);
-  const [designer, setDesigner] = useState<(typeof DESIGNERS_ALL)[0] | null>(null);
+  const [designer, setDesigner] = useState<typeof DESIGNERS[0] | null>(null);
   const [service, setService] = useState<(typeof SERVICES)[0] | null>(null);
   const [dateIdx, setDateIdx] = useState<number | null>(null);
   const [timeSlot, setTimeSlot] = useState<string | null>(null);
