@@ -125,7 +125,7 @@ export default function GalleryScreen() {
       <View
         style={[
           styles.header,
-          { paddingTop: insets.top + (Platform.OS === "web" ? 67 : 0) },
+          { paddingTop: insets.top + (Platform.OS === "web" ? 48 : 0) },
         ]}
       >
         <Text style={styles.headerTitle}>作品集</Text>
@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.background,
   },
   headerTitle: {
-    fontSize: 28,
+    fontSize: 22,
     fontFamily: "Inter_700Bold",
     color: COLORS.primary,
     marginBottom: 2,
