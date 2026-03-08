@@ -13,6 +13,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { COLORS } from "@/constants/colors";
+import { DESIGNERS as ALL_DESIGNERS } from "@/constants/designers";
 
 const CDN = "https://storage.googleapis.com/studio-cms-assets/projects/Nxqg26DmO1";
 
@@ -43,40 +44,7 @@ const SERVICES = [
   { id: "3", icon: "sparkles-outline" as const, title: "形象改造" },
 ];
 
-const DESIGNERS = [
-  {
-    id: "1",
-    name: "Emily Chen",
-    title: "首席設計師",
-    specialty: "精緻剪髮 · 染髮設計",
-    experience: "12年",
-    image: "https://storage.googleapis.com/studio-cms-assets/projects/Nxqg26DmO1/s-1280x1280_v-fms_webp_40a7edb0-2dd9-43f1-a321-e7ff386043e7_small.webp",
-  },
-  {
-    id: "2",
-    name: "Alex Wang",
-    title: "資深設計師",
-    specialty: "燙髮造型 · 頭皮護理",
-    experience: "8年",
-    image: `${CDN}/s-960x1280_v-fms_webp_b9431a2b-1323-48f1-af38-3091c8dfd8ae_small.webp`,
-  },
-  {
-    id: "3",
-    name: "Sophia Lin",
-    title: "設計師",
-    specialty: "韓系剪染 · 護髮療程",
-    experience: "5年",
-    image: `${CDN}/s-600x864_v-fs_webp_30e9ca4b-daef-49d9-b203-a90d275bd1e7_small.webp`,
-  },
-  {
-    id: "4",
-    name: "Kevin Liu",
-    title: "設計師",
-    specialty: "男士剪髮 · 質感造型",
-    experience: "6年",
-    image: `${CDN}/s-2400x2400_v-frms_webp_c25d7de4-e518-40c7-b3f3-b0bae2bd6f53_small.webp`,
-  },
-];
+const DESIGNERS = ALL_DESIGNERS.slice(0, 4);
 
 const REVIEWS = [
   {
