@@ -140,7 +140,7 @@ export default function NewsScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.header, { paddingTop: insets.top + (Platform.OS === "web" ? 67 : 0) }]}>
+      <View style={[styles.header, { paddingTop: insets.top + (Platform.OS === "web" ? 48 : 0) }]}>
         <Text style={styles.headerTitle}>最新消息</Text>
         <Text style={styles.headerSub}>Found Hair 官方公告與美髮資訊</Text>
       </View>
@@ -224,11 +224,11 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: 20,
-    paddingBottom: 16,
+    paddingBottom: 12,
     backgroundColor: COLORS.background,
   },
   headerTitle: {
-    fontSize: 28,
+    fontSize: 22,
     fontFamily: "Inter_700Bold",
     color: COLORS.primary,
     marginBottom: 2,
